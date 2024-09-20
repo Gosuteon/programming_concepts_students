@@ -1,5 +1,6 @@
 package basics;
 
+
 public class IntroductionExercises {
 
     public static int variable = 0;
@@ -10,20 +11,27 @@ public class IntroductionExercises {
      * Function that bound variable to value
      */
     public static void attribute(int value){
+        variable = value;
     }
 
     /*
      * Function that return the addition of the two parameters
      */
     public static int add(int a, int b){
-         return 0;
+
+        return a+b;
     }
 
     /*
      * return true is a and b are equal
      */
     public static boolean equalsIntegers(int a, int b){
-         return false;
+
+        if(a==b){
+            return true;
+
+        }
+        return false;
     }
 
     /*
@@ -31,7 +39,7 @@ public class IntroductionExercises {
      * You must use a ternary operation
      */
     public static int max(int a, int b){
-         return 0;
+         return (a<b)?b:a;
     }
 
     /*
@@ -40,7 +48,25 @@ public class IntroductionExercises {
      * If two value are equals, return -1.
      */
     public static int middleValue(int a, int b, int c){
-         return 0;
+        if (a<b&&a>c){
+            return a;
+        }
+        if (c<b&&a<c){
+            return c;
+        }
+        if (a>b&&b>c){
+            return b;
+        }
+        if (a>b&&a<c){
+            return a;
+        }
+        if (c>b&&a>c){
+            return c;
+        }
+        if (a<b&&b<c){
+            return b;
+        }
+         return -1;
     }
     /*
      * This function must return :
@@ -52,7 +78,15 @@ public class IntroductionExercises {
      * And you should not use if/else!
      */
     public static String greetings(String str){
-         return "";
+        switch (str){
+            case "Morning":
+                return "Good morning, sir!";
+            case "Evening":
+                return "Good evening, sir!";
+            default:
+                return "Hello, sir!";
+        }
+
     }
 
     /*
@@ -62,21 +96,37 @@ public class IntroductionExercises {
      * The last element is the middle element of a
      */
     public static int[] lastFirstMiddle(int[] a){
-         return null;
+        int[] l= new int[3];
+        l[0] = a[a.length-1];
+        l[1] = a[0];
+        l[2] = a[a.length / 2];
+        return l;
     }
 
     /*
      * This function must return the sum of the elements of array using a for loop
      */
     public static int sum(int[] array){
-         return 0;
+        int sum =0;
+        for(int i=0;i<array.length;i++){
+            sum+= array[i];
+        }
+         return sum;
     }
 
     /*
      * return the maximum element of array using a while loop
      */
     public static int maxArray(int[] array){
-         return 0;
+        int i =0;
+        int max =0;
+        while(i<array.length){
+            if (max<array[i]){
+                max = array[i];
+            }
+            i+=1;
+        }
+        return max;
     }
 
 
@@ -104,7 +154,29 @@ public class IntroductionExercises {
      *
      * because 3.1 can not be converted to an integer
      * */
+    public static boolean isDigit(String ch){
+        String[] test = new String[]{"0","1","2","3","4","5","6","7","8","9"};
+        for(int i=0; i<test.length;i++){
+            if(test[i].equals(ch)){
+                return true;
+            }
+        }
+        return false;
+    }
     public static void main(String... args){
+        squares = new int[args.length];
+        for(int i=0;i<args.length;i++){
+            if(isDigit(args[i])){
+                squares[i] = Integer.parseInt(args[i])*Integer.parseInt(args[i]);
+            }
+            else{
+                squares[i] = 0;
+            }
+
+
+
+        }
+
     }
 
 }
