@@ -14,7 +14,26 @@ public class Matrix {
      *  @return The matrix represented by the String
      */
     public static int[][] buildFrom(String s) {
-         return null;
+        String[] splitted = s.split("\n");
+
+        int[][] matrice = new int[splitted.length][];
+        for(int i = 0; i<splitted.length;i++){
+
+            String[] finale = splitted[i].split( " ");
+
+            matrice[i] = new int[finale.length];
+            for( int j = 0; j<finale.length;j++){
+
+                matrice[i][j] = Integer.parseInt(finale[j]);
+
+
+            }
+        }
+
+
+
+
+        return matrice;
     }
 
 
@@ -25,7 +44,13 @@ public class Matrix {
      * @return The sum of the element in matrix
      */
     public static int sum(int[][] matrix) {
-         return 0;
+        int count = 0;
+        for (int i = 0; i<matrix.length; i++){
+            for (int j = 0; j<matrix[i].length;j++){
+                count += matrix[i][j];
+            }
+        }
+         return count;
     }
 
     /**
@@ -35,7 +60,14 @@ public class Matrix {
      * @return A new matrix that is the transpose of matrix
      */
     public static int[][] transpose(int[][] matrix) {
-         return null;
+        int[][] newmatrice = new int[matrix[0].length][matrix.length];
+        for (int i=0; i< matrix.length; i++){
+            for (int j=0; j<matrix[i].length; j++){
+                newmatrice[j][i] = matrix[i][j];
+            }
+        }
+
+         return newmatrice;
     }
 
     /**
@@ -46,6 +78,14 @@ public class Matrix {
      * @return The n x k matrix product of matrix1 and matrix2
      */
     public static int[][] product(int[][] matrix1, int[][] matrix2) {
-         return null;
+        int[][] newmatrice = new int[matrix1.length][matrix2[0].length];
+        for (int i=0; i< matrix1.length; i++){
+            for (int j =0; j< matrix2.length; j++){
+                for (int k = 0;k<matrix2[j].length;k++){
+                    newmatrice[i][k] += matrix1[i][j] * matrix2[j][k];
+                }
+            }
+        }
+         return newmatrice;
     }
 }
