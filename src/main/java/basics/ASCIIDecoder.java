@@ -20,7 +20,35 @@ public class ASCIIDecoder {
      * You should NEVER return null or an array containing null.
      */
     public static String [] decode(int[] forbidden, String[][] sentences){
-         return null;
+
+        String[] finale = new String[sentences.length];
+        boolean test = true;
+        for (int i = 0; i<sentences.length;i++){
+            StringBuilder retour = new StringBuilder();
+            for(int j = 0;j<sentences[i].length;j++){
+
+                if (forbidden != null){
+                    for (int k = 0; k< forbidden.length;k++){
+
+                        if (Integer.parseInt(sentences[i][j]) != forbidden[k]){
+                            test = true;
+
+                        }
+                        else {
+                            test = false;
+                            break;
+                        }
+                    }
+
+                }
+                if (test == true){
+                    retour.append((char)Integer.parseInt(sentences[i][j]));
+                }
+
+            }
+            finale[i] = retour.toString();
+        }
+        return finale;
     }
 
 }

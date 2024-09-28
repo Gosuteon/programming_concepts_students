@@ -14,7 +14,29 @@ public class StringUtils {
      *          return an array of size 1 with the string at element 0
      */
     public static String [] split(String str, char delimiter){
-         return null;
+        int O = 0;
+        int count = 0;
+        char[] mot = str.toCharArray();
+        while (O != mot.length){
+            if (mot[O] == delimiter){
+                count += 1;
+            }
+            O += 1;
+        }
+        String[] finale = new String[count+1];
+        count = 0;
+        finale[0] ="";
+        for(int i = 0; i<mot.length;i++){
+            if (mot[i] == delimiter){
+                count += 1;
+                finale[count] = "";
+            }
+            else {
+                finale[count] += mot[i];
+                System.out.println(finale[count]);
+            }
+        }
+        return finale;
     }
 
 
@@ -28,7 +50,8 @@ public class StringUtils {
      *          in str
      */
     public static int indexOf(String str, String sub){
-         return 0;
+        int i = str.indexOf(sub);
+         return i;
     }
 
 
@@ -40,7 +63,8 @@ public class StringUtils {
      *          character put to lower case.
      */
     public static String toLowerCase(String str){
-         return null;
+        String retou = str.toLowerCase();
+         return retou;
     }
 
 
@@ -55,8 +79,20 @@ public class StringUtils {
      * @return true if str is a palyndrome, false otherwise
      */
     public static boolean palindrome(String str){
-         return false;
+        char[] mot = str.toCharArray();
+        boolean test = true;
+        for (int i=0; i<str.length()-1;i++){
+            if (mot[i] == mot[str.length()-i-1]){
+                test = true;
+            }
+            else{
+                test = false;
+            }
+        }
+         return test;
     }
+
+
 
 
 }
