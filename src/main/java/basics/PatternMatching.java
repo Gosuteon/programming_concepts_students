@@ -16,9 +16,17 @@ public class PatternMatching {
      * the string. Must be <code>-1</code> if the pattern is absent
      * from the string.
      **/
-    public static int find(String pattern,
-                           String value) {
-         return -1;
+    public static int find(String pattern, String value) {
+        int index = -1;
+        int patternLength = pattern.length();
+        int valueLength = value.length();
+        // remove the indexes that are not possible
+        for (int i = 0; i < valueLength - patternLength + 1; i++) {
+            // use index + length to get the possible substring
+            if (value.substring(i, i + patternLength).equals(pattern)) {
+                return i;
+            }
+        }
+        return index;
     }
-
 }

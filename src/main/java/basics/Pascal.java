@@ -43,6 +43,7 @@ import java.util.Arrays;
  *  row3    1 2 1
  *  row4   1 3 3 1
  *  row5  1 4 6 4 1
+ *  row6 1 5 10 10 5 1
  *
  * Comme vous pouvez l'observer, chaque élément de chaque
  * ligne est soit 1, soit la somme de
@@ -68,12 +69,35 @@ public class Pascal {
     /**
      * Computes the nth row of Pascal triangle
      *
-     * @param n > 0
+     * @param *n > 0
      * @return the nth row of Pascal triangle
      */
-    public static int[] pascal(int n) {
-         return null;
+    public static int[] calculate(int[] line){
+        int[] retour = new int[line.length + 1];
+        for(int i=0; i<retour.length;i++){
+            if (i==0||i+1== retour.length){
+                retour[i] = 1;
+            }
+            else{
+                retour[i] = line[i-1] + line[i];
+            }
+        }
+        return retour;
     }
+    public static int[] pascal(int n) {
+        int[] tempo = new int[1];
+        tempo[0] = 1;
+        int count = 0;
+        while (count<n-1){
+            count++;
+
+            tempo = calculate(tempo);
+        }
+        return tempo;
+    }
+
+
+
 
 
 

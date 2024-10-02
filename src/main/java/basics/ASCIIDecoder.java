@@ -28,20 +28,19 @@ public class ASCIIDecoder {
             for(int j = 0;j<sentences[i].length;j++){
 
                 if (forbidden != null){
-                    for (int k = 0; k< forbidden.length;k++){
+                    for (int value : forbidden) {
 
-                        if (Integer.parseInt(sentences[i][j]) != forbidden[k]){
+                        if (Integer.parseInt(sentences[i][j]) != value) {
                             test = true;
 
-                        }
-                        else {
+                        } else {
                             test = false;
                             break;
                         }
                     }
 
                 }
-                if (test == true){
+                if (test){
                     retour.append((char)Integer.parseInt(sentences[i][j]));
                 }
 
