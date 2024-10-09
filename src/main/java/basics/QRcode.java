@@ -43,10 +43,42 @@ public class QRcode {
      * @param o the other matrix to compare to
      * @return
      */
+    public static boolean compare(boolean[][] one, boolean[][] two){
+        for(int i=0; i<one.length;i++){
+            for(int j=0; j<one[0].length;j++){
+                if(one[i][j] != two[i][j]){
+                    return false;
+                }
+
+            }
+        }
+        return true;
+    }
+    public static boolean[][] rotate(boolean[][] matrix){
+        int l = matrix.length;
+        boolean[][] new_matrix = new boolean[l][l];
+        for (int i =0; i<l; i++){
+            for (int j=0;j<l;j++){
+
+                new_matrix[i][j] = matrix[l-1-j][i];
+
+            }
+        }
+        return new_matrix;
+    }
     @Override
     public boolean equals(Object o) {
-        // TODO
-         return false;
+        QRcode matrix = (QRcode) o;
+        boolean[][] rotated = rotate(matrix.data);
+        for(int i= 0; i<=3;i++){
+            if (compare(this.data, rotated)){
+                return true;
+            }
+            rotated = rotate(rotated);
+
+        }
+
+        return false;
     }
 
 
