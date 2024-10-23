@@ -43,6 +43,7 @@ public class MaximumSumSubarray {
      *          is a tie, the one that starts the earliest is returned)
      */
     public static ArrayIndex maximumSumSubarray(int [] array) {
-         return new ArrayIndex(-1, -1);
+
+        return new ArrayIndex(-1, -1);
     }
 }

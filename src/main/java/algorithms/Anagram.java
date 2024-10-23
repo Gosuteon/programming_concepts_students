@@ -1,5 +1,7 @@
 package algorithms;
 
+import java.util.Arrays;
+
 public class Anagram {
 
     /**
@@ -23,7 +25,18 @@ public class Anagram {
      * letter.
      **/
     public static int[] countAlphabet(String s) {
-         return null;
+        String upper = s.toUpperCase();
+        char[] s_list = upper.toCharArray();
+        int[] result = new int[26];
+        for (int i = 0; i<s.length(); i++){
+            int ascii = s_list[i];
+            ascii -= 65;
+            if (ascii<0 || ascii>=26){
+                continue;
+            }
+            result[ascii] += 1;
+        }
+        return result;
     }
 
 
@@ -42,6 +55,8 @@ public class Anagram {
      **/
     public static boolean isAnagram(String s1,
                                     String s2) {
-         return false;
+        int[] result_s1 = countAlphabet(s1);
+        int[] result_s2 = countAlphabet(s2);
+        return Arrays.equals(result_s1, result_s2);
     }
 }

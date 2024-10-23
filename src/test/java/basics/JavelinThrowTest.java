@@ -119,7 +119,7 @@ public class JavelinThrowTest {
         // The throw is valid because the javelin landed inside
         // the boundaries.
         char[][] field = makeCopyOfArray(emptyField);
-        field[2][5] = '#';
+        field[3][5] = '#';
 
         assertTrue(JavelinThrow.isThrowValid(field));
     }
@@ -132,6 +132,78 @@ public class JavelinThrowTest {
         // the boundary.
         char[][] field = makeCopyOfArray(emptyField);
         field[5][0] = '#';
+
+        assertFalse(JavelinThrow.isThrowValid(field));
+    }
+
+    @Test
+    @Grade(value = 1, cpuTimeout = 1)
+    public void RobinFaux0() {
+        // This is the same field as in the test testFindJavelin2.
+        // The throw is invalid because the javelin landed outside
+        // the boundary.
+        char[][] field = makeCopyOfArray(emptyField);
+        field[0][2] = '#';
+
+        assertFalse(JavelinThrow.isThrowValid(field));
+    }
+
+    @Test
+    @Grade(value = 1, cpuTimeout = 1)
+    public void RobinFaux1() {
+        // This is the same field as in the test testFindJavelin2.
+        // The throw is invalid because the javelin landed outside
+        // the boundary.
+        char[][] field = makeCopyOfArray(emptyField);
+        field[1][2] = '#';
+
+        assertFalse(JavelinThrow.isThrowValid(field));
+    }
+
+    @Test
+    @Grade(value = 1, cpuTimeout = 1)
+    public void RobinVrai2() {
+        // This is the same field as in the test testFindJavelin2.
+        // The throw is invalid because the javelin landed outside
+        // the boundary.
+        char[][] field = makeCopyOfArray(emptyField);
+        field[2][2] = '#';
+
+        assertTrue(JavelinThrow.isThrowValid(field));
+    }
+
+    @Test
+    @Grade(value = 1, cpuTimeout = 1)
+    public void RobinVrai3() {
+        // This is the same field as in the test testFindJavelin2.
+        // The throw is invalid because the javelin landed outside
+        // the boundary.
+        char[][] field = makeCopyOfArray(emptyField);
+        field[3][2] = '#';
+
+        assertTrue(JavelinThrow.isThrowValid(field));
+    }
+
+    @Test
+    @Grade(value = 1, cpuTimeout = 1)
+    public void RobinFaux5() {
+        // This is the same field as in the test testFindJavelin2.
+        // The throw is invalid because the javelin landed outside
+        // the boundary.
+        char[][] field = makeCopyOfArray(emptyField);
+        field[5][2] = '#';
+
+        assertFalse(JavelinThrow.isThrowValid(field));
+    }
+
+    @Test
+    @Grade(value = 1, cpuTimeout = 1)
+    public void RobinFaux6() {
+        // This is the same field as in the test testFindJavelin2.
+        // The throw is invalid because the javelin landed outside
+        // the boundary.
+        char[][] field = makeCopyOfArray(emptyField);
+        field[6][2] = '#';
 
         assertFalse(JavelinThrow.isThrowValid(field));
     }

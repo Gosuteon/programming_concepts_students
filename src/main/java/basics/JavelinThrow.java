@@ -2,9 +2,9 @@ package basics;
 
 /*
     Javelin throw = (fr) Lancer du javelot
-    
+
     This is the field of a javelin throw competition seen from above:
-   
+
                 ........xxxxxx
                 .....xxx......
                 ..xxx.........
@@ -14,7 +14,7 @@ package basics;
                 ..xxx.........
                 .....xxx......
                 ........xxxxxx
-    
+
     The thrower stands on the left side of the field and throws the javelin
     to the right. The "x" mark the boundaries of the valid landing area.
     The throw is valid only if the javelin (represented by "#") lands inside
@@ -75,13 +75,13 @@ public class JavelinThrow {
      * Here, x indicates the position on the horizontal axis and y indicates
      * the position on the vertical axis. In the below picture, the
      * javelin is at position x=3, y=0, i.e., in element field[0][3]:
-     *
-     *              ...#.............
-     *              .................
-     *    Thrower   ....the field....
-     *              .................
-     *              .................
-     *
+     * <p>
+     * ...#.............
+     * .................
+     * Thrower   ....the field....
+     * .................
+     * .................
+     * <p>
      * The field is always rectangular.
      * The javelin is indicated by a "#" character. The boundaries
      * are indicated by "x" characters. Look at the examples in the test.
@@ -91,8 +91,18 @@ public class JavelinThrow {
      * @return the position of the javelin in the field
      */
     public static JavelinPosition findJavelin(char[][] field) {
-         // TODO
-         return new JavelinPosition(-1,-1);
+        // TODO
+        int fieldWidth = field[0].length;
+        int fieldHeight = field.length;
+        for (int i = 0; i < fieldHeight; i++) {
+            for (int j = 0; j < fieldWidth; j++) {
+                if (field[i][j] == '#') {
+                    return new JavelinPosition(j, i);
+                }
+
+            }
+        }
+        return null;
 
     }
 
@@ -100,10 +110,10 @@ public class JavelinThrow {
      * This method takes a two-dimensional array representing the javelin throw
      * field and returns true if the javelin throw was valid. Otherwise, it
      * returns false.
-     *
+     * <p>
      * The field boundaries are indicated by "x" characters. The position of the
      * landed javelin is indicated by "#". All other characters can be ignored.
-     *
+     * <p>
      * The field is always rectangular and has two boundary lines, similar to
      * those shown in the above example. Look at the examples in the tests.
      * There is always exactly one javelin on the field.
@@ -112,11 +122,24 @@ public class JavelinThrow {
      * @return true if throw is valid, false if the throw is invalid.
      */
     public static boolean isThrowValid(char[][] field) {
-        int fieldWidth = field[0].length;
         int fieldHeight = field.length;
+        int position_x = findJavelin(field).x;
+        int position_y = findJavelin(field).y;
+        boolean inBound = false;
+        // TODO
+        for (int i = 0; i<fieldHeight;i++){
+            if (field[i][position_x] != 'x' ){
+                continue;
+            }
 
-         // TODO
-         return false;
-
+            if(!inBound && i<position_y) {
+                inBound = true;
+                continue;
+            } else if (inBound && i>position_y) {
+                return true;
+            }
+            inBound = false;
+        }
+        return false;
     }
 }
