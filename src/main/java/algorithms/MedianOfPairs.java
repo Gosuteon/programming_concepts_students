@@ -33,7 +33,28 @@ public class MedianOfPairs {
      */
     public static Pair median(List<Pair> list) {
         // TODO
-         return null;
+        Comparator<Pair> comparateur = new Comparator<Pair>()  {
+            @Override
+            public int compare(Pair a, Pair b){
+                if (a.first == b.first){
+                    if (a.second==b.second) {
+                        return 0;
+                    }
+                    if(a.second>b.second){
+                        return 1;
+                    }
+                    return -1;
+
+                }
+                if (a.first> b.first){
+                    return 1;
+                }
+                return -1;
+
+            }
+        };
+        list.sort(comparateur);
+         return list.get(list.size() / 2);
     }
 
     public static class Pair {

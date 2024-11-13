@@ -48,12 +48,22 @@ interface SwapList {
             // Invariant: the 'iter' biggest elements are at the end of the list and are sorted.
             // Example, at iteration iter=3, the three lasts elements are the three biggest elements in the list, and
             //  they are in the increasing order.
-
             // TODO
+            for(int i=0; i< list.getSize()-iter-1;i++){
+                if (list.getFirst() > list.getSecond()) { //Mettre le plus grand devant
+                    list.swap();
+                }
+                list.pop();
+            }
+            for (int i = 0; i <=iter; i++) {
+                list.pop();
+            }
 
         }
 
-        // Here, if you followed the invariant proposed above, the list should be sorted!
+
+
+            // Here, if you followed the invariant proposed above, the list should be sorted!
     }
 }
 

@@ -10,7 +10,7 @@ import java.util.Iterator;
  */
 public class RecursiveStack<E>  implements Iterable<E> {
 
-    final E e;
+    E e;
     final RecursiveStack<E> next;
 
     /**
@@ -20,6 +20,7 @@ public class RecursiveStack<E>  implements Iterable<E> {
         // TODO
         e = null;
         next = null;
+
     }
 
     /**
@@ -44,7 +45,7 @@ public class RecursiveStack<E>  implements Iterable<E> {
      * @return the new stack
      */
     public RecursiveStack<E> add(E e) {
-		 return null;
+        return new RecursiveStack<E>(e, this);
         // TODO
     }
 
@@ -55,8 +56,10 @@ public class RecursiveStack<E>  implements Iterable<E> {
      * @return the element on top of the stack
      */
     public E top() {
-        // TODO
-         return null;
+        if (this.e == null){
+            throw new EmptyStackException();
+        }
+         return this.e;
     }
 
     /**
@@ -67,7 +70,12 @@ public class RecursiveStack<E>  implements Iterable<E> {
      */
     public RecursiveStack<E> removeTop() {
         // TODO
-         return null;
+        RecursiveStack<E> copy = this;
+        if (copy.next==null){
+            throw new EmptyStackException();
+        }
+
+         return copy.next;
     }
 
     /**
@@ -77,7 +85,11 @@ public class RecursiveStack<E>  implements Iterable<E> {
      */
     public int size() {
         // TODO
-         return -1;
+        if (this.next == null){
+            return 0;
+        }
+
+         return this.next.size()+1;
     }
 
     /**
@@ -88,7 +100,14 @@ public class RecursiveStack<E>  implements Iterable<E> {
      */
     public RecursiveStack<E> reverse() {
         // TODO
-         return null;
+
+        RecursiveStack<E> copy = this;
+        RecursiveStack<E> reversed = new RecursiveStack<E>(null,null);
+        for (int i = 0; i<this.size();i++){
+            reversed = reversed.add(copy.e);
+            copy = copy.next;
+        }
+         return reversed;
     }
 
     /**
@@ -100,7 +119,21 @@ public class RecursiveStack<E>  implements Iterable<E> {
     @Override
     public Iterator<E> iterator() {
         // TODO: think about implementing an inner class
-         return null;
+         //return null;
+         return new Iterator<E>() {
+             RecursiveStack<E> current = RecursiveStack.this;
+             @Override
+             public boolean hasNext() {
+                 return current.next!=null;
+             }
+
+             @Override
+             public E next() {
+                 E e = current.e;
+                 current = current.next;
+                 return e;
+             }
+         };
     }
 
 

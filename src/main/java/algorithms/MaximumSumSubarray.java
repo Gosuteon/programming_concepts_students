@@ -43,7 +43,21 @@ public class MaximumSumSubarray {
      *          is a tie, the one that starts the earliest is returned)
      */
     public static ArrayIndex maximumSumSubarray(int [] array) {
-
-        return new ArrayIndex(-1, -1);
+        int max = 0;
+        int min = 0;
+        int max_somme = 0;
+        for (int i = 0; i<array.length; i++){
+            int somme = 0;
+            int count = 0;
+            for (int j = i; j<array.length; j++){
+                somme += array[i];
+                count += 1;
+            }
+            if (somme > max_somme){
+                min = i;
+                max = count - 1;
+            }
+        }
+        return new ArrayIndex(max,min);
     }
 }

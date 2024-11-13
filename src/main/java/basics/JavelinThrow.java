@@ -100,8 +100,10 @@ public class JavelinThrow {
                     return new JavelinPosition(j, i);
                 }
 
+
             }
         }
+
         return null;
 
     }
